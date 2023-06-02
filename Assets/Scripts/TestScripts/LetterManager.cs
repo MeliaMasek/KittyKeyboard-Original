@@ -13,12 +13,16 @@ public class LetterManager : MonoBehaviour
 
     [SerializeField] [Tooltip("Grid Parent")]
     HorizontalLayoutGroup gridLayout = null;
+
+    [SerializeField] [Tooltip("Word Repo")]
+    private WordRepo wordRepo = null;
     
     private List<Letter> letters = null;
-    private const int wordLength = 7;
+    private const int wordLength = 4;
     private int index = 0;
     private int currentRow = 0;
     private char?[] guess = new char?[wordLength];
+    private char[] wordchar = new char[wordLength];
 
     private void Update()
     {
@@ -31,6 +35,23 @@ public class LetterManager : MonoBehaviour
         GridSetup();
     }
 
+    private void Start()
+    {
+        SetWord();
+    }
+
+    public void SetWord()
+    {
+        string word = wordRepo.RandomWord();
+        for (int i = 0; i < word.Length; i++)
+            wordchar[i] = word[i];
+    }
+
+    public string GetWord()
+    {
+        return new string(wordchar);
+    }
+    
     public void GridSetup()
     {
         if (letters == null)
@@ -95,7 +116,31 @@ public class LetterManager : MonoBehaviour
         }
         else
         {
-            
+            if (wordRepo.CheckWord(wordchar.ToString()))
+            {
+                bool incorrect = false;
+
+                for (int i = 0; i < wordLength; i++)
+                {
+                    bool correct = guess[i] == wordchar[i];
+
+                    if (!correct)
+                    {
+                        incorrect = true;
+
+                        bool letterExists = false;
+
+                        for (int j = 0; j < wordLength; j++)
+                        {
+                            letterExists = guess[i] == wordchar[j];
+                            if (letterExists)
+                            {
+                                break;
+                            }   
+                        }
+                    }
+                }
+            }
         }
     }
 }
