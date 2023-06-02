@@ -33,12 +33,6 @@ public class WordRepo : MonoBehaviour
         word = word.ToUpper().Trim();
     }
 
-    
-    
-    
-    
-    
-    
     /*
     private TextAsset wordlist = null;
     

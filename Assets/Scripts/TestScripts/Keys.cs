@@ -1,6 +1,7 @@
 using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using Button = UnityEngine.UIElements.Button;
 
 [RequireComponent(typeof(Button))]
@@ -12,12 +13,17 @@ public class Keys : MonoBehaviour
     private KeyCode keyCode = KeyCode.None;
 
     public Action<KeyCode> pressed;
+    
+    public KeyCode KeyCode
+    {
+        get { return keyCode; }
+    }
 
     private void Awake()
     {
         GetComponent<UnityEngine.UI.Button>().onClick.AddListener(OnButtonClick);
         
-        TextMeshProUGUI text = GetComponentInChildren<TextMeshProUGUI>();
+        Text text = GetComponentInChildren<Text>();
         
         if (text && string.IsNullOrEmpty(text.text))
         {
@@ -28,5 +34,6 @@ public class Keys : MonoBehaviour
     private void OnButtonClick()
     {
         pressed?.Invoke(keyCode);
+        Debug.Log("Clicked");
     }
 }

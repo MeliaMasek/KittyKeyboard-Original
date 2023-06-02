@@ -14,8 +14,11 @@ public class LetterManager : MonoBehaviour
     [SerializeField] [Tooltip("Grid Parent")]
     GridLayoutGroup gridLayout = null;
 
-    [SerializeField] [Tooltip("Word Repo")]
-    private WordRepo wordRepo = null;
+    //[SerializeField] [Tooltip("Word Repo")]
+    //private WordRepo wordRepo = null;
+
+    [SerializeField] [Tooltip("Letter Keys")]
+    private Keys[] keys = null;
     
     private List<Letter> letters = null;
     private const int wordLength = 7;
@@ -26,30 +29,30 @@ public class LetterManager : MonoBehaviour
 
     private void Update()
     {
-        //if (Input.anyKeyDown)
-        //    ParseInput(Input.inputString);
+        if (Input.anyKeyDown)
+            ParseInput(Input.inputString);
     }
 
     private void Awake()
     {
         GridSetup();
+
+        foreach (Keys key in keys)
+        {
+            key.pressed += OnKeyPressed;
+        }
     }
 
-    private void Start()
+    private void Restart()
     {
-        SetWord();
-    }
+        foreach (Letter letter in letters)
+            letter.Clear();
 
-    public void SetWord()
-    {
-        //string word = wordRepo.RandomWord();
-        //for (int i = 0; i < word.Length; i++)
-        //    wordchar[i] = word[i];
-    }
+        index = 0;
+        currentRow = 0;
 
-    public string GetWord()
-    {
-        return new string(wordchar);
+        for (int i = 0; i < wordLength; i++)
+            guess[i] = null;
     }
     
     public void GridSetup()
@@ -67,7 +70,7 @@ public class LetterManager : MonoBehaviour
         }
     }
 
-    /*public void ParseInput(string value)
+    public void ParseInput(string value)
     {
         foreach (char c in value)
         {
@@ -77,7 +80,6 @@ public class LetterManager : MonoBehaviour
             }
             else if ((c == '\n') || (c == '\r'))
             {
-                GuessWord();
             }
             else
             {
@@ -85,7 +87,7 @@ public class LetterManager : MonoBehaviour
             }
         }
     }
-    */
+    
     public void EnterLetter(char c)
     {
         if (index < wordLength)
@@ -107,41 +109,26 @@ public class LetterManager : MonoBehaviour
             guess[index] = null;
         }
     }
-    
-    /*public void GuessWord()
+
+    private void OnKeyPressed(KeyCode keycode)
     {
-        if (index != wordLength)
         {
-            //Animation
+            if (keycode == KeyCode.Return)
+                Restart();
         }
-        else
+
+        if (keycode == KeyCode.Return)
         {
-            if (wordRepo.CheckWord(wordchar.ToString()))
-            {
-                bool incorrect = false;
-
-                for (int i = 0; i < wordLength; i++)
-                {
-                    bool correct = guess[i] == wordchar[i];
-
-                    if (!correct)
-                    {
-                        incorrect = true;
-
-                        bool letterExists = false;
-
-                        for (int j = 0; j < wordLength; j++)
-                        {
-                            letterExists = guess[i] == wordchar[j];
-                            if (letterExists)
-                            {
-                                break;
-                            }   
-                        }
-                    }
-                }
-            }
+            //GuessWord();
+        }
+        else if (keycode == KeyCode.Backspace || keycode == KeyCode.Delete)
+        {
+            DeleteLetter();
+        }
+        else if (keycode >= KeyCode.A && keycode <= KeyCode.Z )
+        { 
+            int index = keycode - KeyCode.A;
+            EnterLetter( ((char)((int)'A' + index)));
         }
     }
-    */
 }
