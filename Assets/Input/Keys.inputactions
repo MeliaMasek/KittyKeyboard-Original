@@ -1,0 +1,46 @@
+{
+    "name": "New Controls",
+    "maps": [
+        {
+            "name": "Alphabet",
+            "id": "7da9fc12-c775-4a4f-841b-8ceafc437d72",
+            "actions": [
+                {
+                    "name": "A",
+                    "type": "Button",
+                    "id": "77fd8cd3-8fa0-4eba-b4d2-b367ae305923",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "51091e1e-e925-4705-b40a-6fb02c215fac",
+                    "path": "<Keyboard>/#(A)",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Alphabet",
+                    "action": "A",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": [
+        {
+            "name": "Alphabet",
+            "bindingGroup": "Alphabet",
+            "devices": [
+                {
+                    "devicePath": "<Touchscreen>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        }
+    ]
+}
