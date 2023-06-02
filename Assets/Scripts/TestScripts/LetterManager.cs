@@ -54,7 +54,7 @@ public class LetterManager : MonoBehaviour
             {
                 DeleteLetter();
             }
-            else if ((c == '\n') || (c == 'r'))
+            else if ((c == '\n') || (c == '\r'))
             {
                 GuessWord();
             }
@@ -89,6 +89,13 @@ public class LetterManager : MonoBehaviour
     
     public void GuessWord()
     {
-        
+        if (index != wordLength)
+        {
+            //Animation
+        }
+        else
+        {
+            
+        }
     }
 }
