@@ -133,6 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 33050122}
   - component: {fileID: 33050121}
+  - component: {fileID: 33050123}
   m_Layer: 0
   m_Name: LetterManager
   m_TagString: Untagged
@@ -155,6 +156,7 @@ MonoBehaviour:
   letterPrefab: {fileID: 6943486036131425819, guid: 34406b560346ed74db27faf90c7489b6, type: 3}
   rows: 1
   gridLayout: {fileID: 716503691}
+  wordRepo: {fileID: 33050123}
 --- !u!4 &33050122
 Transform:
   m_ObjectHideFlags: 0
@@ -170,6 +172,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &33050123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 33050120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1187c5d9374dad445a3ce8fbf7c38c57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wordlist: {fileID: 4900000, guid: 38285d619d4ad844fbf861d31cc393e3, type: 3}
 --- !u!1 &104467673
 GameObject:
   m_ObjectHideFlags: 0
@@ -1434,7 +1449,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -312.4921, y: 94}
+  m_AnchoredPosition: {x: -20, y: 97}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &716503691
@@ -1446,7 +1461,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 716503689}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
+  m_Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
@@ -1455,14 +1470,12 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 4
-  m_Spacing: 4
-  m_ChildForceExpandWidth: 1
-  m_ChildForceExpandHeight: 1
-  m_ChildControlWidth: 0
-  m_ChildControlHeight: 0
-  m_ChildScaleWidth: 0
-  m_ChildScaleHeight: 0
-  m_ReverseArrangement: 0
+  m_StartCorner: 0
+  m_StartAxis: 0
+  m_CellSize: {x: 100, y: 100}
+  m_Spacing: {x: 0, y: 0}
+  m_Constraint: 2
+  m_ConstraintCount: 1
 --- !u!1 &752120432
 GameObject:
   m_ObjectHideFlags: 0
@@ -4091,10 +4104,6 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 1639453203}
     m_Modifications:
-    - target: {fileID: 601696246, guid: 88f22242cedf5d54cb645919e7f8ac0f, type: 3}
-      propertyPath: keyCode
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2327108205776312518, guid: 88f22242cedf5d54cb645919e7f8ac0f, type: 3}
       propertyPath: m_Name
       value: Key
@@ -4143,11 +4152,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5813321578344890804, guid: 88f22242cedf5d54cb645919e7f8ac0f, type: 3}
-      propertyPath: m_UseGravity
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 601696246, guid: 88f22242cedf5d54cb645919e7f8ac0f, type: 3}
+    m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 88f22242cedf5d54cb645919e7f8ac0f, type: 3}

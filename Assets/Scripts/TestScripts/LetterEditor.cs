@@ -25,6 +25,7 @@ public class LetterEditor : Editor
                 else
                 {
                     GUILayout.Label(spoiler, EditorStyles.boldLabel);
+                    //Debug.Log(spoiler);
                 }
             }
         }

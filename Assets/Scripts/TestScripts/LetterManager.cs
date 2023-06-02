@@ -9,16 +9,16 @@ public class LetterManager : MonoBehaviour
     private Letter letterPrefab = null;
 
     [SerializeField] [Tooltip("Amount of rows")]
-    private int rows = 1;
+    private int rows = 2;
 
     [SerializeField] [Tooltip("Grid Parent")]
-    HorizontalLayoutGroup gridLayout = null;
+    GridLayoutGroup gridLayout = null;
 
     [SerializeField] [Tooltip("Word Repo")]
     private WordRepo wordRepo = null;
     
     private List<Letter> letters = null;
-    private const int wordLength = 4;
+    private const int wordLength = 7;
     private int index = 0;
     private int currentRow = 0;
     private char?[] guess = new char?[wordLength];
@@ -26,8 +26,8 @@ public class LetterManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.anyKeyDown)
-            ParseInput(Input.inputString);
+        //if (Input.anyKeyDown)
+        //    ParseInput(Input.inputString);
     }
 
     private void Awake()
@@ -42,9 +42,9 @@ public class LetterManager : MonoBehaviour
 
     public void SetWord()
     {
-        string word = wordRepo.RandomWord();
-        for (int i = 0; i < word.Length; i++)
-            wordchar[i] = word[i];
+        //string word = wordRepo.RandomWord();
+        //for (int i = 0; i < word.Length; i++)
+        //    wordchar[i] = word[i];
     }
 
     public string GetWord()
@@ -67,7 +67,7 @@ public class LetterManager : MonoBehaviour
         }
     }
 
-    public void ParseInput(string value)
+    /*public void ParseInput(string value)
     {
         foreach (char c in value)
         {
@@ -85,7 +85,7 @@ public class LetterManager : MonoBehaviour
             }
         }
     }
-    
+    */
     public void EnterLetter(char c)
     {
         if (index < wordLength)
@@ -108,7 +108,7 @@ public class LetterManager : MonoBehaviour
         }
     }
     
-    public void GuessWord()
+    /*public void GuessWord()
     {
         if (index != wordLength)
         {
@@ -143,4 +143,5 @@ public class LetterManager : MonoBehaviour
             }
         }
     }
+    */
 }
