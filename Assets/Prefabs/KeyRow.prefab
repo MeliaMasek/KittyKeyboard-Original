@@ -23,7 +23,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2848835931357217058}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 95.35104}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -101,7 +101,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4020204518738728155, guid: 88f22242cedf5d54cb645919e7f8ac0f, type: 3}
       propertyPath: keyCode
-      value: 97
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
@@ -169,7 +169,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4020204518738728155, guid: 88f22242cedf5d54cb645919e7f8ac0f, type: 3}
       propertyPath: keyCode
-      value: 107
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
@@ -237,7 +237,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4020204518738728155, guid: 88f22242cedf5d54cb645919e7f8ac0f, type: 3}
       propertyPath: keyCode
-      value: 121
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
@@ -305,7 +305,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4020204518738728155, guid: 88f22242cedf5d54cb645919e7f8ac0f, type: 3}
       propertyPath: keyCode
-      value: 105
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
@@ -373,7 +373,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4020204518738728155, guid: 88f22242cedf5d54cb645919e7f8ac0f, type: 3}
       propertyPath: keyCode
-      value: 116
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
@@ -441,7 +441,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4020204518738728155, guid: 88f22242cedf5d54cb645919e7f8ac0f, type: 3}
       propertyPath: keyCode
-      value: 116
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
@@ -509,7 +509,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4020204518738728155, guid: 88f22242cedf5d54cb645919e7f8ac0f, type: 3}
       propertyPath: keyCode
-      value: 116
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []

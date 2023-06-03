@@ -1,9 +1,11 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 //code borrowed and modified by Warped Imagination on youtube https://www.youtube.com/watch?v=wsWeI7APjAU
 //code borrowed and modified by Zigurous on youtube https://www.youtube.com/watch?v=Tbcgqz5lM38
+//code borrowed and modified by TaranSaini2005 on UnityAnswers https://answers.unity.com/questions/1658930/how-to-shuffle-the-charaters-within-words-whilst-n.html
 
 public class WordRepo : MonoBehaviour
 {
@@ -13,6 +15,10 @@ public class WordRepo : MonoBehaviour
     private string[] validWords;
     private string word;
     private string jumbled;
+    private string singleLetter;
+
+    private readonly Dictionary<char, KeyCode> _keycodeCache = new Dictionary<char, KeyCode>();
+    public KeyCode assignedLetter;
 
     private void Start()
     {
@@ -34,22 +40,40 @@ public class WordRepo : MonoBehaviour
         word = solutionsWords[Random.Range(0, solutionsWords.Length)];
         word = word.ToUpper().Trim();
 
-        
         jumbled = word;
+
+        //Jumbles the random word
+        char[] myChar = jumbled.ToCharArray();
         
-        
-        char[] myChar = jumbled.ToCharArray(); // Convert string to char array
-        
-        // Jumble char array 
         for (int i = myChar.Length - 1; i > 0; i--)
         {
                 int rnd = Random.Range(0, i);
                 (myChar[i], myChar[rnd]) = (myChar[rnd], myChar[i]);
                 
-                jumbled = new string(myChar);   // Convert char array to string 
-                //jumbleWordText.text = word;   // Display jumbled word to screen
+                jumbled = new string(myChar);
         }
-        Debug.Log(jumbled);
         
+        //creates an index for each letter in the jumbled word
+        char[] myCharJumbled = jumbled.ToCharArray();
+        singleLetter = myCharJumbled[0].ToString();
+
+        
+        var test = Char.Parse(singleLetter);
+
+        var buttontest = GetKeyCode(test);
+        Debug.Log(buttontest);
+        
+    }
+    
+    public KeyCode GetKeyCode(char character)
+    {
+        // Get from cache if it was taken before to prevent unnecessary enum parse
+        KeyCode code;
+        if (_keycodeCache.TryGetValue(character, out code)) return code;
+        // Cast to it's integer value
+        int alphaValue = character;
+        code = (KeyCode)Enum.Parse(typeof(KeyCode), alphaValue.ToString());
+        _keycodeCache.Add(character, code);
+        return code;
     }
 }

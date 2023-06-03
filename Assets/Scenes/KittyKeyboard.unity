@@ -4188,18 +4188,6 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 80387534374549126, guid: ae31bc542d0c5964393f902e596f251b, type: 3}
-      propertyPath: keyCode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2470364903528272617, guid: ae31bc542d0c5964393f902e596f251b, type: 3}
-      propertyPath: keyCode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2579187689022258345, guid: ae31bc542d0c5964393f902e596f251b, type: 3}
-      propertyPath: keyCode
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2848835931357217058, guid: ae31bc542d0c5964393f902e596f251b, type: 3}
       propertyPath: m_Name
       value: KeyRow
@@ -4289,18 +4277,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2848835932941095730, guid: ae31bc542d0c5964393f902e596f251b, type: 3}
-      propertyPath: keyCode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3040356652702875004, guid: ae31bc542d0c5964393f902e596f251b, type: 3}
-      propertyPath: keyCode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7596540184842345625, guid: ae31bc542d0c5964393f902e596f251b, type: 3}
-      propertyPath: keyCode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8645389040613610140, guid: ae31bc542d0c5964393f902e596f251b, type: 3}
       propertyPath: keyCode
       value: 0
       objectReference: {fileID: 0}
