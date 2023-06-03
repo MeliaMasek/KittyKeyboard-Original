@@ -14,9 +14,6 @@ public class LetterManager : MonoBehaviour
     [SerializeField] [Tooltip("Grid Parent")]
     GridLayoutGroup gridLayout = null;
 
-    //[SerializeField] [Tooltip("Word Repo")]
-    //private WordRepo wordRepo = null;
-
     [SerializeField] [Tooltip("Letter Keys")]
     private Keys[] keys = null;
     

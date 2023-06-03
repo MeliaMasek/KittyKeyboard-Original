@@ -5,7 +5,7 @@ using UnityEngine;
 public class Letter : MonoBehaviour
 {
     private TextMeshProUGUI text = null;
-    public char? Entry { get; private set; } = null;
+    private char? Entry { get; set; } = null;
 
     private void Awake()
     {

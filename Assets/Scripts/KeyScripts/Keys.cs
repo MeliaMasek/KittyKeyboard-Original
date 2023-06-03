@@ -1,8 +1,8 @@
 using System;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using Button = UnityEngine.UIElements.Button;
+using Random = UnityEngine.Random;
 
 [RequireComponent(typeof(Button))]
 
@@ -10,7 +10,7 @@ using Button = UnityEngine.UIElements.Button;
 public class Keys : MonoBehaviour
 {
     [SerializeField] [Tooltip("Keycode representing a key")]
-    private KeyCode keyCode = KeyCode.None;
+    private KeyCode keyCode = UnityEngine.KeyCode.None;
 
     public Action<KeyCode> pressed;
     
@@ -27,13 +27,14 @@ public class Keys : MonoBehaviour
         
         if (text && string.IsNullOrEmpty(text.text))
         {
+            gameObject.GetComponent<WordRepo>().SetRandomWord();
             text.text = keyCode.ToString();
         }
     }
-
+    
     private void OnButtonClick()
     {
         pressed?.Invoke(keyCode);
-        Debug.Log("Clicked");
+        //Debug.Log("Clicked");
     }
 }

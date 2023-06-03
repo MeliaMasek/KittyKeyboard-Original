@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -12,6 +12,8 @@ public class WordRepo : MonoBehaviour
     private string[] solutionsWords;
     private string[] validWords;
     private string word;
+    private string jumbled;
+
     private void Start()
     {
         LoadData();
@@ -20,37 +22,34 @@ public class WordRepo : MonoBehaviour
 
     private void LoadData()
     {
-        TextAsset textFile = Resources.Load("All_Words") as TextAsset;
+        TextAsset textFile = Resources.Load("Seven_Letter_Words") as TextAsset;
         validWords = textFile.text.Split('\n');
         
-        textFile = Resources.Load("All_Words") as TextAsset;
+        textFile = Resources.Load("Seven_Letter_Words") as TextAsset;
         solutionsWords = textFile.text.Split('\n');
     }
 
-    private void SetRandomWord()
+    public void SetRandomWord()
     { 
         word = solutionsWords[Random.Range(0, solutionsWords.Length)];
         word = word.ToUpper().Trim();
-    }
 
-    /*
-    private TextAsset wordlist = null;
-    
-    private List<string> words = null;
-
-    private void Awake()
-    {
-        words = new List<string>(wordlist.text.Split(new char[] {',', ' ', '\n', '\r' }, System.StringSplitOptions.RemoveEmptyEntries));
+        
+        jumbled = word;
+        
+        
+        char[] myChar = jumbled.ToCharArray(); // Convert string to char array
+        
+        // Jumble char array 
+        for (int i = myChar.Length - 1; i > 0; i--)
+        {
+                int rnd = Random.Range(0, i);
+                (myChar[i], myChar[rnd]) = (myChar[rnd], myChar[i]);
+                
+                jumbled = new string(myChar);   // Convert char array to string 
+                //jumbleWordText.text = word;   // Display jumbled word to screen
+        }
+        Debug.Log(jumbled);
+        
     }
-
-    public string RandomWord()
-    {
-        return words[Random.Range(0, words.Count)];
-    }
-
-    public bool CheckWord(string word)
-    {
-        return words.Contains(word);
-    }
-    */
 }
