@@ -1,6 +1,10 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
+//code borrowed and modified by Tabsil on youtube https://www.youtube.com/watch?v=rYcE_Fem4NE
+//code borrowed and modified by Tabsil on youtube https://www.youtube.com/watch?v=ZGtpZ24-tWc
+//code borrowed and modified by Tabsil on youtube https://www.youtube.com/watch?v=T3MT9Tb1juc
 public class Keyboard : MonoBehaviour
 {
     [Header("Elements")] 
@@ -18,6 +22,9 @@ public class Keyboard : MonoBehaviour
     [Header("KeySettings")] 
     [Range(0f, 1f)] [SerializeField] private float keyToLineRatio;
     [Range(0f, .25f)] [SerializeField] private float keyXSpacing;
+    
+    [Header("Event")] 
+    public Action <char> onKeyPressed;
 
     IEnumerator Start()
     {
@@ -85,6 +92,7 @@ public class Keyboard : MonoBehaviour
     private void KeyPressedCallback(char key)
     {
         Debug.Log("Key pressed : " + key);
+        onKeyPressed?.Invoke(key);
     }
 }
 
