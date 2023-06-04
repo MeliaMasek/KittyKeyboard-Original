@@ -1,21 +1,36 @@
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-//code borrowed and modified by Warped Imagination on youtube https://www.youtube.com/watch?v=wsWeI7APjAU
-public class LetterManager : MonoBehaviour
+public class KeyboardInput : MonoBehaviour
 {
     [SerializeField] [Tooltip("Prefab for the letter")]
     private Letter letterPrefab = null;
 
     [SerializeField] [Tooltip("Amount of rows")]
-    private int rows = 2;
+    private int rows = 1;
 
     [SerializeField] [Tooltip("Grid Parent")]
     GridLayoutGroup gridLayout = null;
 
     [SerializeField] [Tooltip("Letter Keys")]
     private Keys[] keys = null;
+    
+    [Header("Elements")] 
+    [SerializeField] private RectTransform rectTransform;
+    [SerializeField] private Key keyPrefab;
+
+    [Header("KeyboardLine")] 
+    [SerializeField] private KeyboardLine[] lines;
+
+    [Header("KeySettings")] 
+    [Range(0f, 1f)] [SerializeField] private float keyToLineRatio;
+    [Range(0f, .25f)] [SerializeField] private float keyXSpacing;
+    
+    [Header("Event")] 
+    public Action <char> onKeyPressed;
     
     private List<Letter> letters = null;
     private const int wordLength = 7;
@@ -28,6 +43,8 @@ public class LetterManager : MonoBehaviour
     {
         if (Input.anyKeyDown)
             ParseInput(Input.inputString);
+        UpdateRectTransform();
+        PlaceKeys();
     }
 
     private void Awake()
@@ -38,6 +55,13 @@ public class LetterManager : MonoBehaviour
         {
             key.pressed += OnKeyPressed;
         }
+    }
+    
+    IEnumerator Start()
+    {
+        CreateKeys();
+        yield return null;
+        UpdateRectTransform();
     }
 
     private void Restart()
@@ -90,14 +114,13 @@ public class LetterManager : MonoBehaviour
         {
             c = char.ToUpper(c);
 
-            //GetComponent<Keyboard>().KeyPressedCallback();
-                
             letters[(currentRow * wordLength) + index].EnterLetter(c);
+            onKeyPressed?.Invoke(c);
             guess[index] = c;
             index++;
         }
     }
-    
+
     public void DeleteLetter()
     {
         if (index > 0)
@@ -129,4 +152,61 @@ public class LetterManager : MonoBehaviour
             EnterLetter( ((char)((int)'A' + index)));
         }
     }
+
+    private void UpdateRectTransform()
+    {
+        rectTransform.sizeDelta = new Vector2(Screen.width, Screen.height / 3);
+    }
+
+    private void CreateKeys()
+    {
+        for (int i = 0; i < lines.Length; i++)
+        {
+            for (int j = 0; j < lines[i].keys.Length; j++)
+            {
+                char key = lines[i].keys[j];
+
+                Key keyInstance = Instantiate(keyPrefab, rectTransform);
+                keyInstance.SetKey(key);
+                
+                keyInstance.GetComponent<Button>().onClick.AddListener((() => EnterLetter(key)));
+            }
+        }
+    }
+
+    private void PlaceKeys()
+    {
+        int lineCount = lines.Length;
+        float lineHeight = rectTransform.rect.height / lineCount;
+        float keyWidth = lineHeight * keyToLineRatio;
+        float spacingX = keyXSpacing * lineHeight;
+
+        int currentKeyIndex = 0;
+
+        for (int i = 0; i < lineCount; i++)
+        {
+            float halfKeyCount = (float)lines[i].keys.Length / 2;
+
+            float StartX = rectTransform.position.x - (keyWidth + spacingX) * halfKeyCount + (keyWidth + spacingX) / 2;
+            float lineY = rectTransform.position.y + rectTransform.rect.height / 2 - lineHeight / 2 - i * lineHeight;            
+            
+            for (int j = 0; j < lines[i].keys.Length; j++)
+            {
+                float KeyX = StartX + j * (keyWidth + spacingX);
+                Vector2 keyPostion = new Vector2(KeyX, lineY);
+
+                RectTransform keyRectTransform = rectTransform.GetChild(currentKeyIndex).GetComponent<RectTransform>();
+                keyRectTransform.position = keyPostion;
+                keyRectTransform.sizeDelta = new Vector2(keyWidth, keyWidth);
+                currentKeyIndex++;
+            }
+        }
+    }
+}
+
+[System.Serializable]
+public struct KeyboardLines
+{
+    public string keys;
+    
 }

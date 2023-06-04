@@ -89,7 +89,7 @@ public class Keyboard : MonoBehaviour
         }
     }
 
-    private void KeyPressedCallback(char key)
+    public void KeyPressedCallback(char key)
     {
         Debug.Log("Key pressed : " + key);
         onKeyPressed?.Invoke(key);
