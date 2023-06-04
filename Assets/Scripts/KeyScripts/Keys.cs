@@ -2,7 +2,6 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 using Button = UnityEngine.UIElements.Button;
-using Random = UnityEngine.Random;
 
 [RequireComponent(typeof(Button))]
 
@@ -27,7 +26,6 @@ public class Keys : MonoBehaviour
         
         if (text && string.IsNullOrEmpty(text.text))
         {
-            gameObject.GetComponent<WordRepo>().SetRandomWord();
             text.text = keyCode.ToString();
         }
     }

@@ -1,5 +1,3 @@
-using System;
-using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -16,9 +14,6 @@ public class WordRepo : MonoBehaviour
     private string word;
     private string jumbled;
     private string singleLetter;
-
-    private readonly Dictionary<char, KeyCode> _keycodeCache = new Dictionary<char, KeyCode>();
-    public KeyCode assignedLetter;
 
     private void Start()
     {
@@ -56,24 +51,5 @@ public class WordRepo : MonoBehaviour
         //creates an index for each letter in the jumbled word
         char[] myCharJumbled = jumbled.ToCharArray();
         singleLetter = myCharJumbled[0].ToString();
-
-        
-        var test = Char.Parse(singleLetter);
-
-        var buttontest = GetKeyCode(test);
-        Debug.Log(buttontest);
-        
-    }
-    
-    public KeyCode GetKeyCode(char character)
-    {
-        // Get from cache if it was taken before to prevent unnecessary enum parse
-        KeyCode code;
-        if (_keycodeCache.TryGetValue(character, out code)) return code;
-        // Cast to it's integer value
-        int alphaValue = character;
-        code = (KeyCode)Enum.Parse(typeof(KeyCode), alphaValue.ToString());
-        _keycodeCache.Add(character, code);
-        return code;
     }
 }
