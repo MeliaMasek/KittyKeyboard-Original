@@ -141,27 +141,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3098577947766932092, guid: 88f22242cedf5d54cb645919e7f8ac0f, type: 3}
       propertyPath: m_LocalScale.x
-      value: 2.0009675
+      value: 4.2470536
       objectReference: {fileID: 0}
     - target: {fileID: 3098577947766932092, guid: 88f22242cedf5d54cb645919e7f8ac0f, type: 3}
       propertyPath: m_LocalScale.y
-      value: 2.0009675
+      value: 4.2470536
       objectReference: {fileID: 0}
     - target: {fileID: 3098577947766932092, guid: 88f22242cedf5d54cb645919e7f8ac0f, type: 3}
       propertyPath: m_LocalScale.z
-      value: 2.0009675
+      value: 4.2470536
       objectReference: {fileID: 0}
     - target: {fileID: 3098577947766932092, guid: 88f22242cedf5d54cb645919e7f8ac0f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -397.2
+      value: -380.5
       objectReference: {fileID: 0}
     - target: {fileID: 3098577947766932092, guid: 88f22242cedf5d54cb645919e7f8ac0f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -262.44
+      value: -271.9
       objectReference: {fileID: 0}
     - target: {fileID: 3098577947766932092, guid: 88f22242cedf5d54cb645919e7f8ac0f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -92.5
+      value: -113.3
       objectReference: {fileID: 0}
     - target: {fileID: 3098577947766932092, guid: 88f22242cedf5d54cb645919e7f8ac0f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -246,6 +246,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   solutionsWords: []
+  jumbled: 
 --- !u!114 &33050124
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -261,15 +262,13 @@ MonoBehaviour:
   letterPrefab: {fileID: 6943486036131425819, guid: 34406b560346ed74db27faf90c7489b6, type: 3}
   rows: 1
   gridLayout: {fileID: 716503691}
-  keys:
-  - {fileID: 101506804}
+  keys: []
   rectTransform: {fileID: 775630549}
   keyPrefab: {fileID: 6387881104040669205, guid: 7a012475864994649b4caee334417637, type: 3}
   lines:
-  - keys: Hamster
   - keys: 
-  keyToLineRatio: 0.42
-  keyXSpacing: 0.25
+  keyToLineRatio: 0.08
+  keyXSpacing: 0.009
 --- !u!1001 &38572307
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4594,7 +4593,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2059673614
 RectTransform:
   m_ObjectHideFlags: 0

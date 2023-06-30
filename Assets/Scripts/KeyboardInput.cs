@@ -208,5 +208,4 @@ public class KeyboardInput : MonoBehaviour
 public struct KeyboardLines
 {
     public string keys;
-    
 }

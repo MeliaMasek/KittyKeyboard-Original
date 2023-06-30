@@ -12,7 +12,7 @@ public class WordRepo : MonoBehaviour
     private string[] solutionsWords;
     private string[] validWords;
     private string word;
-    private string jumbled;
+    public string jumbled;
     private string singleLetter;
 
     private void Start()
