@@ -20,13 +20,15 @@ public class MenusBehaviour : MonoBehaviour
     public void Resume()
     {
         mainMenu.SetActive(false);
+        shopMenu.SetActive(false);
+        pauseMenu.SetActive(false);
         Time.timeScale = 1f;
     }
     
     public void Home()
     {
-        Time.timeScale = 1f;
         mainMenu.SetActive(true);
+        Time.timeScale = 1f;
     }
     
     public void Shop()
